@@ -42,23 +42,41 @@ public class NewYear {
         upper=s.nextInt();
         if(type.equals("weight"))
         {
-       Comparator<choclates> weightComparator = (c1, c2) -> (int) (c1.getWeight() - c2.getWeight());
-       choccoll.sort(weightComparator); 
-       for(int i=0;i<choccoll.size();i++)
-       {
-           if((choccoll.get(i)).weight>=lower && (choccoll.get(i).weight)<=upper)
-           System.out.println((choccoll.get(i)).className());
-       }
+      for(int i=0;i<choccoll.size();i++)
+      {
+           for(int j=i+1;j<choccoll.size();j++)
+           {
+               if((choccoll.get(i)).getWeight()>(choccoll.get(j)).getWeight())
+               {
+                   Collections.swap(choccoll,i,j);
+                   System.out.println("hello");
+               }
+           }
+       } 
+      for(int i=0;i<choccoll.size();i++)
+      {
+          if((choccoll.get(i)).getWeight()>=lower &&(choccoll.get(i)).getWeight()<=upper)
+          System.out.println((choccoll.get(i)).className());
+      }
         }
         else
         {
-       Comparator<choclates> priceComparator = (c1, c2) -> (int) (c1.getPrice() - c2.getPrice());
-       choccoll.sort(priceComparator); 
-       for(int i=0;i<choccoll.size();i++)
-       {
-           if((choccoll.get(i)).price>=lower && (choccoll.get(i).price)<=upper)
-           System.out.println((choccoll.get(i)).className());
-       }
+      for(int i=0;i<choccoll.size();i++)
+      {
+           for(int j=i+1;j<choccoll.size();j++)
+           {
+               if((choccoll.get(i)).getPrice()>(choccoll.get(j)).getPrice())
+               {
+                   Collections.swap(choccoll,i,j);
+                   System.out.println("hello");
+               }
+           }
+       } 
+      for(int i=0;i<choccoll.size();i++)
+      {
+          if((choccoll.get(i)).getPrice()>=lower &&(choccoll.get(i)).getPrice()<=upper)
+          System.out.println((choccoll.get(i)).className());
+      }
        }
     }
     void sort_cand(String type)
@@ -69,30 +87,51 @@ public class NewYear {
         lower=s.nextInt();
         System.out.println("Enter lower limit");
         upper=s.nextInt();
-        if(type.equals("weight"))
+    if(type.equals("weight"))
         {
-       Comparator<choclates> weightComparator = (c1, c2) -> (int) (c1.getWeight() - c2.getWeight());
-       cancoll.sort(weightComparator); 
-       for(int i=0;i<choccoll.size();i++)
-       {
-           if((cancoll.get(i)).weight>=lower && (cancoll.get(i).weight)<=upper)
-           System.out.println((choccoll.get(i)).className());
-       }
+      for(int i=0;i<cancoll.size();i++)
+      {
+           for(int j=i+1;j<cancoll.size();j++)
+           {
+               if((cancoll.get(i)).getWeight()>(cancoll.get(j)).getWeight())
+               {
+                   Collections.swap(cancoll,i,j);
+                   System.out.println("hello");
+               }
+           }
+       } 
+      for(int i=0;i<cancoll.size();i++)
+      {
+          if((cancoll.get(i)).getWeight()>=lower &&(cancoll.get(i)).getWeight()<=upper)
+          System.out.println((cancoll.get(i)).className());
+      }
         }
         else
         {
-       Comparator<choclates> priceComparator = (c1, c2) -> (int) (c1.getPrice() - c2.getPrice());
-       cancoll.sort(priceComparator); 
-       for(int i=0;i<choccoll.size();i++)
-       {
-           if((cancoll.get(i)).price>=lower && (cancoll.get(i).price)<=upper)
-           System.out.println((choccoll.get(i)).className());
+      for(int i=0;i<cancoll.size();i++)
+      {
+           for(int j=i+1;j<cancoll.size();j++)
+           {
+               if((cancoll.get(i)).getPrice()>(cancoll.get(j)).getPrice())
+               {
+                   Collections.swap(cancoll,i,j);
+                   System.out.println("hello");
+               }
+           }
+       } 
+      for(int i=0;i<cancoll.size();i++)
+      {
+          if((cancoll.get(i)).getPrice()>=lower &&(cancoll.get(i)).getPrice()<=upper)
+          System.out.println((cancoll.get(i)).className());
+      }
        }
-       }        
     }
     public static void main(String[] args) {
        
         // TODO code application logic here
+        NewYear obj=new NewYear();
+        obj.input_choc();
+        obj.sort_choc("weight");
     }
     void input_choc()
     {
@@ -112,13 +151,15 @@ public class NewYear {
             {
                 if(cname.equals("CandyMan"))
                 {
-                    CandyMan choc=new CandyMan(price,weight);
+                    Candies choc=new CandyMan(price,weight);
+                    choclates choc1=new CandyMan(price,weight);
                     cancoll.add(choc);
                     choccoll.add(choc);
                 }
                 else
                 {
                     ChocCandy choc=new ChocCandy(price,weight);
+                    choclates chocl=new ChocCandy(price,weight);
                      cancoll.add(choc);
                      choccoll.add(choc);
                 }
@@ -126,6 +167,7 @@ public class NewYear {
             else
             {
                 Waffy choc=new Waffy(price,weight);
+                choccoll.add(choc);
                 
             }
         }
